@@ -35,6 +35,18 @@ Setup Ubuntu 16.04 on AWS then,
   sudo apt-get install nginx
   ```
   
+  - 4.1 confirm it works
+  
+  ```bash
+  systemctl status nginx
+  ````
+  
+  - 4.2 check firewall
+  
+  ```bash
+  sudo ufw app list
+  ```
+  
 5. letsencrypt: https://certbot.eff.org/#ubuntuxenial-nginx
 
   ```bash
@@ -65,7 +77,7 @@ Setup Ubuntu 16.04 on AWS then,
   sudo apt-get install postgresql postgresql-contrib
   ```
   
-  - 7.1 Setup user and DB
+   - 7.1 Setup user and DB
   
   ```bash
   sudo -u postgres psql
