@@ -2,7 +2,9 @@
 
 ## Instance Setup/Research/Walkthrough
 
-1. Setup Ubuntu 16.04 on AWS
+Setup Ubuntu 16.04 on AWS then,
+
+1. Update/Upgrade
 
   ```bash
   sudo apt-get update && sudo apt-get upgrade 
@@ -14,7 +16,7 @@
   git clone https://github.com/tootsuite/mastodon.git 
   ```
 
-3. Follow https://github.com/tootsuite/mastodon/blob/master/docs/Running-Mastodon/Production-guide.md
+3. Prepare https://github.com/tootsuite/mastodon/blob/master/docs/Running-Mastodon/Production-guide.md
 
   ```bash
   curl -sL https://deb.nodesource.com/setup_4.x | sudo bash - 
@@ -55,5 +57,24 @@
 
   ```bash
   sudo apt-get install redis-server redis-tools
+  ```
+  
+7. postgres: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04
+
+  ```bash
+  sudo apt-get install postgresql postgresql-contrib
+  ```
+  
+  - 7.1 Setup user and DB
+  
+  ```bash
+  sudo -u postgres psql
+  ```
+  
+  at the prompt enter
+  
+  ```
+  CREATE USER mastodon CREATEDB;
+  \q
   ```
   
