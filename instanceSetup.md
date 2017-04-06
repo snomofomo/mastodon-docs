@@ -125,6 +125,8 @@ start: ``` sudo systemctl start mastodon-* ```
 stop : ``` sudo systemctl stop mastodon-* ```
 
 ## Updating
+THIS NEEDS TO BE CONFIRMED. IT MAY HAVE WIPED MY DB
+
 in the mastodon folder...
 ```
 git pull
