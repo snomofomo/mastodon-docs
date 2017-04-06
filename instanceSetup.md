@@ -7,21 +7,21 @@ This instance is running 16.04 64-bit with a 30G drive on the free tier.
 
   ``` sudo apt-get update && sudo apt-get upgrade ```
 
-1. Create mastodon user, give them sudo and switch to user
+2. Create mastodon user, give them sudo and switch to user
   ```
   sudo adduser --ingroup admin mastodon
   su mastodon
   cd
   ```
 
-1. Dependencies
+3. Dependencies
   ```
   curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
   sudo apt-get install imagemagick ffmpeg libpq-dev libxml2-dev libxslt1-dev nodejs file nginx redis-server redis-tools postgresql postgresql-contrib autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
   sudo npm install -g yarn
   ```
 
-1. Nginx
+4. Nginx
 
   Confirm it works
   ``` systemctl status nginx ```
@@ -44,14 +44,14 @@ This instance is running 16.04 64-bit with a 30G drive on the free tier.
   ```bash
   sudo systemctl restart nginx
   ```
-1. Postgres
+5. Postgres
   ```bash
   sudo -u postgres psql
   CREATE USER mastodon CREATEDB;
   \q
   ```
 
-1. Ruby
+6. Ruby
   ```bash
   git clone https://github.com/rbenv/rbenv.git ~/.rbenv
   echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
@@ -89,7 +89,7 @@ This instance is running 16.04 64-bit with a 30G drive on the free tier.
   - install ruby
   ``` rbenv install 2.3.1 ```
 
-1. Clone the repo
+7. Clone the repo
 ```bash
 git clone https://github.com/tootsuite/mastodon.git
 cd mastodon
@@ -109,7 +109,7 @@ yarn install
     ``` ./bin/rake secret ```
 
 
-1. Setup DB
+8. Setup DB
 ```bash
 RAILS_ENV=production bundle exec rails db:setup
 RAILS_ENV=production bundle exec rails assets:precompile
