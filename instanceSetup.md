@@ -133,6 +133,10 @@ RAILS_ENV=production bundle exec rails assets:precompile
 sudo systemctl restart mastodon-*
 ```
 
+## Admin
+https://github.com/tootsuite/mastodon/blob/master/docs/Running-Mastodon/Administration-guide.md
+
+
 ## Resources & References
 mastodon: https://github.com/tootsuite/mastodon/blob/master/docs/Running-Mastodon/Production-guide.md
 
