@@ -1,0 +1,3 @@
+sudo systemctl start mastodon-sidekiq
+sudo systemctl start mastodon-streaming
+sudo systemctl start mastodon-web

@@ -1,0 +1,3 @@
+sudo systemctl stop mastodon-sidekiq
+sudo systemctl stop mastodon-streaming
+sudo systemctl stop mastodon-web
