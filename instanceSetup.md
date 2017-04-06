@@ -1,0 +1,143 @@
+# Instance Setup/Research/Walkthrough
+
+This guide assumes you are running Ubuntu 16.04 on an EC2 instance.  It should work elsewhere but this is the only config it has been tested on.
+This instance is running 16.04 64-bit with a 30G drive on the free tier.
+
+1. Update/Ugrade
+
+  ``` sudo apt-get update && sudo apt-get upgrade ```
+
+1. Create mastodon user, give them sudo and switch to user
+  ```
+  sudo adduser --ingroup admin mastodon
+  su mastodon
+  cd
+  ```
+
+1. Dependencies
+  ```
+  curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
+  sudo apt-get install imagemagick ffmpeg libpq-dev libxml2-dev libxslt1-dev nodejs file nginx redis-server redis-tools postgresql postgresql-contrib autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+  sudo npm install -g yarn
+  ```
+
+1. Nginx
+
+  Confirm it works
+  ``` systemctl status nginx ```
+
+  Check firewall
+  ``` sudo ufw app list ```
+
+  Letsencrypt
+  ```
+  sudo add-apt-repository ppa:certbot/certbot
+  sudo apt-get update
+  sudo apt-get install certbot
+  sudo certbot certonly
+  ```
+  Configure
+
+  see 'etc/nginx/sites-enabled/default', change domain and root settings
+
+  restart nginx
+  ```bash
+  sudo systemctl restart nginx
+  ```
+1. Postgres
+  ```bash
+  sudo -u postgres psql
+  CREATE USER mastodon CREATEDB;
+  \q
+  ```
+
+1. Ruby
+  ```bash
+  git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+  echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+  source ~/.bashrc
+  ```
+
+  confirm the install with
+  ``` type rbenv ```
+
+  output should be
+  ```bash
+  rbenv is a function
+  rbenv ()
+  {
+    local command;
+    command="$1";
+    if [ "$#" -gt 0 ]; then
+      shift;
+    fi;
+    case "$command" in
+      rehash | shell)
+        eval "$(rbenv "sh-$command" "$@")"
+      ;;
+      *)
+        command rbenv "$command" "$@"
+      ;;
+    esac
+  }
+  ```
+
+  - setup ruby-build
+  ``` git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build ```
+
+  - install ruby
+  ``` rbenv install 2.3.1 ```
+
+1. Clone the repo
+```bash
+git clone https://github.com/tootsuite/mastodon.git
+cd mastodon
+```
+install dependencies
+```bash
+gem install bundler
+bundle install --deployment --without development test
+yarn install
+```
+
+  Configure Mastodon
+
+    see .env.production
+
+    run rake 3 times and copy where indicated in .env.production
+    ``` ./bin/rake secret ```
+
+
+1. Setup DB
+```bash
+RAILS_ENV=production bundle exec rails db:setup
+RAILS_ENV=production bundle exec rails assets:precompile
+```
+
+## Systemd
+see etc/systemd/system/mastodon-*
+
+copy to /etc/systemd/system/
+
+start: ``` sudo systemctl start mastodon-* ```
+
+stop : ``` sudo systemctl stop mastodon-* ```
+
+## Updating
+in the mastodon folder...
+```
+git pull
+RAILS_ENV=production bundle exec rails db:setup
+RAILS_ENV=production bundle exec rails assets:precompile
+sudo systemctl restart mastodon-*
+```
+
+## Resources & References
+mastodon: https://github.com/tootsuite/mastodon/blob/master/docs/Running-Mastodon/Production-guide.md
+
+redis: https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04
+
+postgres: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04
+
+ruby: https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-16-04
