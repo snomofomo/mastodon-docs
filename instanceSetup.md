@@ -36,7 +36,7 @@ This instance is running 16.04 64-bit with a 30G drive on the free tier.
   sudo add-apt-repository ppa:certbot/certbot
   sudo apt-get update
   sudo apt-get install certbot
-  sudo certbot certonly
+  sudo certbot certonly --rsa-key-size 4096 --register-unsafely-without-email
   ```
   Configure
 
