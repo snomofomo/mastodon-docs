@@ -130,7 +130,7 @@ THIS NEEDS TO BE CONFIRMED. IT MAY HAVE WIPED MY DB
 in the mastodon folder...
 ```
 git pull
-RAILS_ENV=production bundle exec rails db:setup
+RAILS_ENV=production bundle exec rails db:migrate
 RAILS_ENV=production bundle exec rails assets:precompile
 sudo systemctl restart mastodon-*
 ```
