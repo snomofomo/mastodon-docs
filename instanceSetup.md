@@ -16,7 +16,8 @@ This instance is running 16.04 64-bit with a 30G drive on the free tier.
 
 3. Dependencies
   ```
-  curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
+  wget -O node_setup_4_x.sh https://deb.nodesource.com/setup_4.x
+  sudo bash node_setup_4.x.sh
   sudo apt-get install imagemagick ffmpeg libpq-dev libxml2-dev libxslt1-dev nodejs file nginx redis-server redis-tools postgresql postgresql-contrib autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
   sudo npm install -g yarn
   ```
