@@ -53,41 +53,11 @@ This instance is running 16.04 64-bit with a 30G drive on the free tier.
 
 6. Ruby
   ```bash
-  git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-  echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-  source ~/.bashrc
+  sudo add-apt-repository ppa:brightbox/ruby-ng
+  sudo apt-get update
+  sudo apt-get install ruby-switch ruby-2.3
+  sudo ruby-switch --set ruby2.3
   ```
-
-  confirm the install with
-  ``` type rbenv ```
-
-  output should be
-  ```bash
-  rbenv is a function
-  rbenv ()
-  {
-    local command;
-    command="$1";
-    if [ "$#" -gt 0 ]; then
-      shift;
-    fi;
-    case "$command" in
-      rehash | shell)
-        eval "$(rbenv "sh-$command" "$@")"
-      ;;
-      *)
-        command rbenv "$command" "$@"
-      ;;
-    esac
-  }
-  ```
-
-  - setup ruby-build
-  ``` git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build ```
-
-  - install ruby
-  ``` rbenv install 2.3.1 ```
 
 7. Clone the repo
 ```bash
