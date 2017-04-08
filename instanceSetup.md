@@ -55,7 +55,7 @@ This instance is running 16.04 64-bit with a 30G drive on the free tier.
 
 6. Ruby
   ```bash
-- git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+   git clone https://github.com/rbenv/rbenv.git ~/.rbenv
    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
    echo 'eval "$(rbenv init -)"' >> ~/.bashrc
    source ~/.bashrc
