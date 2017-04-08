@@ -57,7 +57,7 @@ This instance is running 16.04 64-bit with a 30G drive on the free tier.
   ```bash
   sudo add-apt-repository ppa:brightbox/ruby-ng
   sudo apt-get update
-  sudo apt-get install ruby-switch ruby-2.3
+  sudo apt-get install ruby-switch ruby2.3
   sudo ruby-switch --set ruby2.3
   ```
 
