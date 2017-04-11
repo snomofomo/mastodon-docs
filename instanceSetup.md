@@ -89,7 +89,7 @@ This instance is running 16.04 64-bit with a 30G drive on the free tier.
    ``` git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build ```
  
    - install ruby
-   ``` rbenv install 2.3.1 ```
+   ``` rbenv install 2.4.1 ```
  
 
 7. Clone the repo
@@ -129,6 +129,20 @@ stop : ``` sudo systemctl stop mastodon-* ```
 
 ## Updating
 
+### Updating from prior to V1.1.1
+in the mastodon folder...
+```
+rbenv install 2.4.1
+git pull
+gem install bundler
+rbenv reshash
+bundle install
+RAILS_ENV=production bundle exec rails db:migrate
+RAILS_ENV=production bundle exec rails assets:precompile
+sudo systemctl restart mastodon-*
+```
+
+### Normal Update Procedure
 in the mastodon folder...
 ```
 git pull
