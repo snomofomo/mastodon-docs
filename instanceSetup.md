@@ -137,6 +137,7 @@ git pull
 gem install bundler
 rbenv reshash
 bundle install
+yarn install
 RAILS_ENV=production bundle exec rails db:migrate
 RAILS_ENV=production bundle exec rails assets:precompile
 sudo systemctl restart mastodon-*
