@@ -109,7 +109,9 @@ yarn install
     see .env.production
 
     run rake 3 times and copy where indicated in .env.production
-    ``` ./bin/rake secret ```
+    ```
+    ./bin/rake secret
+    ```
 
 
 8. Setup DB
@@ -129,24 +131,23 @@ stop : ``` sudo systemctl stop mastodon-* ```
 
 ## Updating
 
+### Normal Update Procedure
+in the mastodon folder...
+```
+git pull
+RAILS_ENV=production bundle exec rails db:migrate
+RAILS_ENV=production bundle exec rails assets:precompile
+sudo systemctl restart mastodon-*
+```
 ### Updating from prior to V1.1.1
 in the mastodon folder...
 ```
 rbenv install 2.4.1
 git pull
 gem install bundler
-rbenv reshash
+rbenv rehash
 bundle install
 yarn install
-RAILS_ENV=production bundle exec rails db:migrate
-RAILS_ENV=production bundle exec rails assets:precompile
-sudo systemctl restart mastodon-*
-```
-
-### Normal Update Procedure
-in the mastodon folder...
-```
-git pull
 RAILS_ENV=production bundle exec rails db:migrate
 RAILS_ENV=production bundle exec rails assets:precompile
 sudo systemctl restart mastodon-*
