@@ -135,6 +135,8 @@ stop : ``` sudo systemctl stop mastodon-* ```
 in the mastodon folder...
 ```
 git pull
+bundle install
+yarn install
 RAILS_ENV=production bundle exec rails db:migrate
 RAILS_ENV=production bundle exec rails assets:precompile
 sudo systemctl restart mastodon-*
