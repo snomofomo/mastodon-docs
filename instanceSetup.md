@@ -1,3 +1,8 @@
+This may not be up to date as I have fallen behind, current production guide can be found here
+
+https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Production-guide.md
+
+
 # Instance Setup/Research/Walkthrough
 
 This guide assumes you are running Ubuntu 16.04 on an EC2 instance.  It should work elsewhere but this is the only config it has been tested on.
